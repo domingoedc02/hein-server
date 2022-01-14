@@ -23,7 +23,7 @@ module.exports.createProduct = async (reqBody,reqHeaders, res) => {
         let  newProduct =  new productsModel({
             name: reqBody.name,
             description: reqBody.description,
-            price: reqBody.price,
+            price: reqBody.price
             // img: reqBody.img,
             // category: reqBody.category,
             // branchType: reqBody.branchType
