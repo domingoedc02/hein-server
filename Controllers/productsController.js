@@ -16,26 +16,30 @@ module.exports.searchProduct = (name) => {
     })
 }
 
-module.exports.createProduct = (reqBody,reqHeaders) => {
-    let userData = decode(reqHeaders.authorization);
+module.exports.createProduct = async (reqBody,reqHeaders, res) => {
+    let userData = await decode(reqHeaders.authorization);
     //console.log(userData);
     if(userData.isAdmin === true){
-        let newProduct = new productsModel({
+        let  newProduct =  new productsModel({
             name: reqBody.name,
             description: reqBody.description,
-            price: reqBody.price
+            price: reqBody.price,
+            // img: reqBody.img,
+            // category: reqBody.category,
+            // branchType: reqBody.branchType
+            // onSale: reqBody.onSale
         })
-        return newProduct.save().then((result, error) =>{
+        return  newProduct.save().then((result, error) =>{
             if(error){
-                return 'Only admin can add a product'
+                return res.send(404,`'Only admin can add a here' ${error}`)
             }
             else{
-                return 'The product is added'
+                return  res.status(200).send(`The product is added ${result}`)
             }
         })
     }
     else{
-        return 'Only admin can add a product'
+        return res.send(404,'Only admin can add a product error')
     }
   
 }

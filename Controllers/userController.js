@@ -24,6 +24,9 @@ module.exports.userRegistration = (reqBody) => {
 
     //console.log(reqBody)
     let newUser = new userModel({
+        firstName: reqBody.firstName,
+        lastName: reqBody.lastName,
+        userName: reqBody.userName,
         email: reqBody.email,
         password: reqBody.password
     })

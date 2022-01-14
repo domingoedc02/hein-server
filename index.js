@@ -10,6 +10,7 @@ dotenv.config();
 
 const userRoutes = require("./Routes/userRoute");
 const orderRoutes = require('./Routes/orderRoute');
+const productsRoutes = require('./Routes/productRoute') 
 
 
 
@@ -28,8 +29,9 @@ app.use(cors())
 
 
 /*Routes*/ 
-app.use(userRoutes);
-app.use(orderRoutes);
+app.use("/users",userRoutes);
+app.use("/order",orderRoutes);
+app.use("/product", productsRoutes)
 
 
 
