@@ -14,7 +14,7 @@ router.put('/set-admin', (req, res) => {
     userController.setAdmin(req.body, req.headers).then(result => res.send(result))
 })
 
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
     userController.userLogin(req.body).then(result => res.json(result))
 })
 
