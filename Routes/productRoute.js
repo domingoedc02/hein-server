@@ -11,7 +11,7 @@ router.get('/get-product', (req, res) => {
     productController.searchProduct(req.body.name).then(result => res.send(result))
 })
 router.post('/create-product', (req,res) => {
-    productController.createProduct(req.body, req.headers, res).then(result => res.send(result))
+    productController.createProduct(req, res, req.headers, req.body ).then(result => result)
 })
 router.put('/update-product', (req, res) => {
     productController.updateProduct(req.body, req.headers).then(result => res.send(result))

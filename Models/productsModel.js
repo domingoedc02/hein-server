@@ -14,28 +14,28 @@ const productsSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    // img:{
-    //     data: Buffer,
-    //     contentType: String,
-    // },
-    // category: {
-    //     type: String,
-    //     required: true
-    // },
-    // branchType: {
-    //     type: Boolean,
-    //     default: true
-    // },
-    // // onSale: {
-    // //     statusOfSale: {
-    // //         type: Boolean,
-    // //         default: false
-    // //     },
-    // //     discount: {
-    // //         type: Number,
-    // //         default: 0
-    // //     }
-    // // },
+    img:{
+        type: String,
+        default: null 
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    branchType: {
+        type: String,
+        default: 'new'
+    },
+    onSale: {
+        statusOfSale: {
+            type: Boolean,
+            default: false
+        },
+        discount: {
+            type: Number,
+            default: 0
+        }
+    },
     isActive: {
         type: Boolean,
         default: true
