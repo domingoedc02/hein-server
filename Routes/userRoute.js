@@ -4,6 +4,7 @@ const router = express.Router();
 const userController = require("./../Controllers/userController")
 
 const auth = require("./../auth");
+const { verify } = require('../auth.js');
 
 router.post('/registration', (req, res) =>{
     userController.userRegistration(req.body).then(result => res.send(result))
@@ -15,8 +16,12 @@ router.put('/set-admin', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    userController.userLogin(req.body).then(result => res.json(result))
+    userController.userLogin(req, res).then(result => result)
 })
+
+// router.get('/details', (req, res) => {
+//     userController.userDetails(req.headers, res).then(result => result)
+// })
 
 
 

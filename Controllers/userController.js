@@ -73,3 +73,8 @@ module.exports.userLogin = (reqBody) => {
     })
 }
 
+// module.exports.userDetails = (req, res) => {
+    
+// }
+
+

@@ -87,3 +87,4 @@ module.exports.archiveProduct = (name, reqHeaders) =>{
         return 'Only admin can archive the product'
     }
 }
+
