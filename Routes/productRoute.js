@@ -50,7 +50,7 @@ router.post('/create-product', (req,res) => {
     productController.createProduct(req.body, res ).then(result => result)
 })
 router.put('/update-product', (req, res ) => {
-    productController.updateProduct(req.body, req.headers).then(result => res.send(result))
+    productController.updateProduct(req.body, req.headers).then(result => res.json(result))
 })
 
 router.put('/archive-products', (req, res) => {
@@ -60,7 +60,7 @@ router.put('/activate-products', (req, res) => {
     productController.activateProduct(req, req.headers).then(result => res.send(result))
 })
 router.delete('/delete-products', (req, res) => {
-    productController.deleteProduct(req, req.headers).then(result => res.send(result))
+    productController.deleteProduct(req, req.headers).then(result => res.json(result))
 })
 router.get('/inactive-products', (req, res) => {
     productController.inActive(req, res).then(result => result)
