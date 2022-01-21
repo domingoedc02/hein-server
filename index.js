@@ -29,6 +29,7 @@ app.use(cors())
 
 
 /*Routes*/ 
+app.use('/public', express.static('public'));
 app.use("/users",userRoutes);
 app.use("/order",orderRoutes);
 app.use("/product", productsRoutes)

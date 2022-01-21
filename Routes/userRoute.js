@@ -7,7 +7,7 @@ const auth = require("./../auth");
 const { verify } = require('../auth.js');
 
 router.post('/registration', (req, res) =>{
-    userController.userRegistration(req.body).then(result => res.send(result))
+    userController.userRegistration(req.body, res).then(result => result)
     //console.log(req.body.Email)
 })
 
@@ -16,12 +16,16 @@ router.put('/set-admin', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    userController.userLogin(req, res).then(result => result)
+    userController.userLogin(req.body).then(result => res.json(result))
 })
 
-// router.get('/details', (req, res) => {
-//     userController.userDetails(req.headers, res).then(result => result)
-// })
+router.get('/details', (req, res) => {
+    userController.userDetails(req, res).then(result => result)
+})
+
+router.get('/get-users', (req, res) => {
+    userController.userProfiles(req, res).then(result => result)
+})
 
 
 

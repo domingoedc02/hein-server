@@ -20,7 +20,7 @@ var adminStatus = function searchAdmin(){
 }
 module.exports = {adminStatus};
 
-module.exports.userRegistration = (reqBody) => {
+module.exports.userRegistration = (reqBody, res) => {
 
     //console.log(reqBody)
     let newUser = new userModel({
@@ -32,10 +32,10 @@ module.exports.userRegistration = (reqBody) => {
     })
     return newUser.save().then((result, error) =>{
         if(error){
-            return false
+            return res.status(404).send(error)
         }
         else{
-            return 'You are now registered'
+            return res.status(200).send(result)
         }
     })
 }
@@ -67,14 +67,27 @@ module.exports.userLogin = (reqBody) => {
             
         }
         else{
-            return 'You are not registered'
+            return {message: 'You are not registered',result, userProfile}
         }
        
     })
 }
 
-// module.exports.userDetails = (req, res) => {
-    
-// }
+module.exports.userDetails = (req, res) => {
+    let id = userProfile[0]._id
+    return userModel.findOne({_id: id}).then(result => {
+        if(result !== null){
+            return res.status(200).send(result)
+        }
+        else{
+            return 'No Data'
+        }
+    })
+}
 
+module.exports.userProfiles = (req, res) =>{
+    return userModel.find({}).then(result => {
+        return res.send(result)
+    })
+}
 

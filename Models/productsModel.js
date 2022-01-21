@@ -4,23 +4,27 @@ const productsSchema = new mongoose.Schema({
 
     name: {
         type: String,
-        required: true
+        required: false
     },
     description: {
         type: String,
-        required: true
+        required: false
     },
     price: {
         type: Number,
-        required: true
+        required: false
     },
     img:{
         type: String,
         default: null 
     },
+    brand: {
+        type: String,
+        required: false
+    },
     category: {
         type: String,
-        required: true
+        required: false
     },
     branchType: {
         type: String,
@@ -45,5 +49,6 @@ const productsSchema = new mongoose.Schema({
         default: Date.now
     }
 })
+
 
 module.exports = mongoose.model("productsModel", productsSchema);
