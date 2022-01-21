@@ -32,10 +32,10 @@ module.exports.userRegistration = (reqBody, res) => {
     })
     return newUser.save().then((result, error) =>{
         if(error){
-            return res.status(404).send(error)
+            return res.status(404).json(error)
         }
         else{
-            return res.status(200).send(result)
+            return res.status(200).json(result)
         }
     })
 }
@@ -87,7 +87,7 @@ module.exports.userDetails = (req, res) => {
 
 module.exports.userProfiles = (req, res) =>{
     return userModel.find({}).then(result => {
-        return res.send(result)
+        return res.json(result)
     })
 }
 

@@ -12,7 +12,7 @@ router.post('/registration', (req, res) =>{
 })
 
 router.put('/set-admin', (req, res) => {
-    userController.setAdmin(req.body, req.headers).then(result => res.send(result))
+    userController.setAdmin(req.body, req.headers).then(result => res.json(result))
 })
 
 router.post('/login', (req, res) => {

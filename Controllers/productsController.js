@@ -35,7 +35,7 @@ const {decode} = require('./../auth')
 module.exports.getProducts = (req, res) => {
     //console.log(adminStatus());
     return productsModel.find({isActive: true}).then(result => {
-        return res.status(200).send(result)
+        return res.status(200).json(result)
 
     })
 }
@@ -76,10 +76,10 @@ module.exports.createProduct =  async (reqBody, res) => {
         })
         return  newProduct.save().then((result, error) =>{
             if(error){
-                return res.send(404,`'Only admin can add a here' ${error}`)
+                return res.json(404,`'Only admin can add a here' ${error}`)
             }
             else{
-                return  res.status(200).send(`The product is added ${result}`)
+                return  res.status(200).json(`The product is added ${result}`)
             }
         })
     // }
@@ -162,7 +162,7 @@ module.exports.deleteProduct = (req, reqHeaders) =>{
 
 module.exports.inActive = (req, res) => {
     return productsModel.find({isActive: false}).then(result => {
-        return res.status(200).send(result)
+        return res.status(200).json(result)
 
     })
 }

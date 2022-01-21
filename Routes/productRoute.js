@@ -38,13 +38,13 @@ router.get('/active-products', (req, res) => {
 })
 
 router.post('/get-product', (req, res) => {
-    productController.searchProduct(req, res).then(result => res.send(result))
+    productController.searchProduct(req, res).then(result => res.json(result))
 })
 router.post('/get-brands', (req, res) => {
     productController.brandsProduct(req, res).then(result => res.send(result))
 })
 router.post('/get-both', (req, res) => {
-    productController.brandCategory(req, res).then(result => res.send(result))
+    productController.brandCategory(req, res).then(result => res.json(result))
 })
 router.post('/create-product', (req,res) => {
     productController.createProduct(req.body, res ).then(result => result)
@@ -54,10 +54,10 @@ router.put('/update-product', (req, res ) => {
 })
 
 router.put('/archive-products', (req, res) => {
-    productController.archiveProduct(req, req.headers).then(result => res.send(result))
+    productController.archiveProduct(req, req.headers).then(result => res.json(result))
 })
 router.put('/activate-products', (req, res) => {
-    productController.activateProduct(req, req.headers).then(result => res.send(result))
+    productController.activateProduct(req, req.headers).then(result => res.json(result))
 })
 router.delete('/delete-products', (req, res) => {
     productController.deleteProduct(req, req.headers).then(result => res.json(result))
