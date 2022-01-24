@@ -6,6 +6,12 @@ const cart = new mongoose.Schema({
     },
     cartItems: {
         type: String
+    },
+    quantity: {
+        type: Number
+    },
+    subtotal: {
+        type: Number
     }
 })
 

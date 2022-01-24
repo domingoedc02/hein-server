@@ -71,6 +71,12 @@ router.post('/add-to-cart', (req, res) => {
 router.post('/view-cart', (req, res) => {
     productController.viewCart(req, res).then(result => res.send(result))
 })
+router.put('/update-cart', (req, res) =>{
+    productController.updateCart(req, res).then(result => res.json(result))
+})
+router.delete('/delete-cart', (req, res) => {
+    productController.deleteCart(req, res).then(result => res.json(result))
+})
   
 //   router.post('/create-product', upload.single('image'), (req, res, next) => {
 //     const url = req.protocol + '://' + req.get('host')

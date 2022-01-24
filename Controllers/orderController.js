@@ -6,34 +6,37 @@ const {decode} = require('./../auth');
 
 
 module.exports.orderCheckout = (reqBody, reqHeaders) => {
-    let userData = decode(reqHeaders.authorization);
-    //if(userData.isAdmin === false){
-    let cart = reqBody
-    let total = 0
-    let seller = [];
-    //console.log(cart['price'])
-    function compute(amount){
-        return total += parseInt(amount);
-    }
+    // let userData = decode(reqHeaders.authorization);
+    // //if(userData.isAdmin === false){
+    // let cart = reqBody
+    // let total = 0
+    // let seller = [];
+    // //console.log(cart['price'])
+    // function compute(amount){
+    //     return total += parseInt(amount);
+    // }
 
-    for(let i = 0; i < cart.length; i++){
-        let amount = cart[i]['price'];
-        compute(amount);
-        seller.push(cart[i]['seller'])
+    // for(let i = 0; i < cart.length; i++){
+    //     let amount = cart[i]['price'];
+    //     compute(amount);
+    //     seller.push(cart[i]['seller'])
         
-    }
+    // }
     //console.log(seller)
-        
-    
+        let name = reqBody.name
+        let price = reqBody.price
+        let total = reqBody.totalAmount
+        let username = reqBody.username
         let newOrder = new orderModel({
             totalAmount: total,
+            name: name,
+            price: price,
             associateWith: {
-                owner: seller
+                buyer: username
             }
         })
         return newOrder.save().then(result =>{
-
-            return 'Your order is successfully processed'
+            return result
             
         })
     //}

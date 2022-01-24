@@ -3,17 +3,21 @@ const mongoose = require('mongoose')
 const orderSchema = new mongoose.Schema({
 
     totalAmount: {
-        type: Number,
-        required: true
+        type: Number
+    },
+    name: {
+        type: String
+    },
+    price: {
+        type: Number
     },
     purchacedOn: {
         type: Date,
         default: Date.now
     },
     associateWith: [{
-        owner: [{
-            type: String,
-            required: true
+        buyer: [{
+            type: String
         }]
     }]
 })

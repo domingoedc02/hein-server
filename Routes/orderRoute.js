@@ -10,14 +10,14 @@ const orderController = require("./../Controllers/orderController")
 
 orderRouter.post('/checkout', (req, res) => {
     orderController.orderCheckout(req.body, req.headers).then(result => {
-        res.send(result)
+        res.json(result)
     })
 })
 
 orderRouter.get('/retrieve-orders', verify,(req, res) => {
     //if(adminStatus === true){
         orderController.retrieveOrders(req.headers).then(result => {
-            res.send(result)
+            res.json(result)
         })
     //}
 })

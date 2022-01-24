@@ -170,7 +170,8 @@ module.exports.inActive = (req, res) => {
 module.exports.addToCart =  async (req, res) => {
         let  newCart =  new cartModel({
             userId: req.body.userId,
-            cartItems: req.body.cartItems
+            cartItems: req.body.cartItems,
+            quantity: req.body.quantity
         })
         return  newCart.save().then((result, error) =>{
             if(error){
@@ -185,6 +186,24 @@ module.exports.addToCart =  async (req, res) => {
 module.exports.viewCart = (req, res) => {
     let usersId = req.body.userId
     return cartModel.find({userId: usersId}).then(result => {
+        return result
+    })
+}
+
+module.exports.updateCart = (req, res) => {
+    let newQuant = req.body.quantity
+    let newSubTotal = req.body.subtotal
+    let newQuantity = {
+        quantity: newQuant,
+        subtotal: newSubTotal
+    }
+    return cartModel.findOneAndUpdate({userId: req.body.userId, cartItems: req.body.cartItems}, newQuantity, {new: true}).then(result => {
+        return result
+    })
+}
+
+module.exports.deleteCart = (req, res) => {
+    return cartModel.findOneAndDelete({userId: req.body.userId, cartItems: req.body.cartItems}).then(result => {
         return result
     })
 }
