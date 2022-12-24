@@ -90,4 +90,18 @@ module.exports.userProfiles = (req, res) =>{
         return res.json(result)
     })
 }
+module.exports.updateUser = (reqBody, reqHeaders) =>{   
+    // let userData = decode(reqHeaders.authorization); 
+    // if(userData.isAdmin === true){
+        let updateUsers = {
+            firstName: reqBody.firstName,
+            lastName: reqBody.lastName,
+            userName: reqBody.userName,
+            email: reqBody.email,
+            password: reqBody.password
+        }
 
+        return userModel.findOneAndUpdate({_id: reqBody.id}, updateUsers, {new: true}).then(result => {
+            return result
+        })
+ }

@@ -26,6 +26,9 @@ router.get('/details', (req, res) => {
 router.get('/get-users', (req, res) => {
     userController.userProfiles(req, res).then(result => result)
 })
+router.put('/update-user', (req, res ) => {
+    userController.updateUser(req.body, req.headers).then(result => res.json(result))
+})
 
 
 
